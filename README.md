@@ -8,7 +8,7 @@ Like `dotfiles`, the name is a convention: a repository of the common files of o
 
 ## What is here
 
-- `LICENSE-APACHE`, `LICENSE-MIT` -- the license texts the repositories carry.
+- `licenses/` -- the license texts the repositories carry: `LICENSE-APACHE` and `LICENSE-MIT` today, and any other a repository comes to need.
 - `.editorconfig` -- the editor settings.
 - `nix/formatter.nix` -- the `treefmt` setup the flakes use for `nix fmt`.
 
@@ -16,7 +16,7 @@ Like `dotfiles`, the name is a convention: a repository of the common files of o
 
 ```bash
 catasto upstream add commonfiles https://github.com/tomet-lang/commonfiles.git
-catasto add LICENSE-MIT --upstream commonfiles LICENSE-MIT
+catasto add LICENSE-MIT --upstream commonfiles licenses/LICENSE-MIT
 catasto add .editorconfig --upstream commonfiles .editorconfig
 catasto add nix/formatter.nix --upstream commonfiles nix/formatter.nix
 ```
