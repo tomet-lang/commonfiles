@@ -1,0 +1,45 @@
+::config(
+  export: {
+    type: commonmark,
+    path: "README.md"
+  }
+)
+::meta{
+  id: doc-readme,
+  lang: en
+}
+
+${macro.generated_by(self.path)}
+
+=[ Common Files ]
+
+The files that the repositories of the Tomet ecosystem share, kept once. A repository takes the ones it needs with @link[ catasto ](target: "https://github.com/tomet-lang/fs-catasto"), which pins each to a commit and a SHA-256, and `catasto check` (run by `sisho check`) says when a copy has been edited or has drifted.
+
+Like `dotfiles`, the name is a convention: a repository of the common files of one person or one organisation, to be taken the same way.
+
+==[ What is here ]
+
+-| `LICENSE-APACHE`, `LICENSE-MIT` -- the license texts the repositories carry.
+-| `.editorconfig` -- the editor settings.
+-| `nix/formatter.nix` -- the `treefmt` setup the flakes use for `nix fmt`.
+
+==[ Taking a file ]
+
+```bash
+catasto upstream add commonfiles https://github.com/tomet-lang/commonfiles.git
+catasto add LICENSE-MIT --upstream commonfiles LICENSE-MIT
+catasto add .editorconfig --upstream commonfiles .editorconfig
+catasto add nix/formatter.nix --upstream commonfiles nix/formatter.nix
+```
+
+That declares the files in `catasto.ctmt`, copies them and writes `catasto.lock`. Commit the three. To take a newer version of one file later:
+
+```bash
+catasto sync --update --only LICENSE-MIT
+```
+
+A file here is never edited in the repository that took it: change it here, then take it again.
+
+==[ Adding a file ]
+
+Only a file that is the same in every repository that has it belongs here. A file that differs by a name or a list (`.gitignore`, `default.config.tmt`) stays where it is.
