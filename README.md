@@ -8,7 +8,9 @@ Like `dotfiles`, the name is a convention: a repository of the common files of o
 
 ## What is here
 
-- the license texts the repositories carry: `LICENSE-APACHE` and `LICENSE-MIT` today, and any other a repository comes to need.
+Everything that is handed out is under `base/`, laid out as it lands in a repository's root. Nothing under `base/` takes effect in this repository: `base/.github/workflows/` is not run here, and the files at this repository's own root (this readme, `tmtroot/`) are its own.
+
+- the license texts the repositories carry.
 - the editor settings.
 - the `treefmt` setup the flakes use for `nix fmt`.
 - direnv: `use flake`, and `scripts/` on the `PATH`.
@@ -18,11 +20,14 @@ Like `dotfiles`, the name is a convention: a repository of the common files of o
 
 ## Taking a file
 
+`base` is the root of the upstream, so a file is taken at the path it will have:
+
 ```bash
-catasto upstream add commonfiles https://github.com/tomet-lang/commonfiles.git
-catasto add LICENSE-MIT --upstream commonfiles licenses/LICENSE-MIT
+catasto upstream add commonfiles https://github.com/tomet-lang/commonfiles.git --root base
+catasto add LICENSE-MIT --upstream commonfiles LICENSE-MIT
 catasto add .editorconfig --upstream commonfiles .editorconfig
 catasto add nix/formatter.nix --upstream commonfiles nix/formatter.nix
+catasto add .github/workflows/nix-ci.yml --upstream commonfiles .github/workflows/nix-ci.yml
 ```
 
 That declares the files in `catasto.ctmt`, copies them and writes `catasto.lock`. Commit the three. To take a newer version of one file later:
@@ -50,5 +55,5 @@ What else a repository checks (tests, lints, generated files that must be fresh)
 
 ## Adding a file
 
-Only a file that is the same in every repository that has it belongs here. A file that differs by a name or a list (`.gitignore`, `default.config.tmt`) stays where it is.
+Only a file that is the same in every repository that has it belongs here, under `base/` at the path it should have in a repository. A file that differs by a name or a list (`.gitignore`, `default.config.tmt`) stays where it is.
 
