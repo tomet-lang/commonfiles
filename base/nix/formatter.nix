@@ -14,6 +14,33 @@
     #= Main
     rustfmt.enable = true;
     taplo.enable = true;
+
+    #= Web / TS / JS / JSON
+    biome = {
+      enable = true;
+      formatCommand = "format";
+      settings = {
+        formatter = {
+          enabled = true;
+          useEditorconfig = true;
+        };
+        linter.enabled = false;
+        assist.enabled = false;
+      };
+      includes = [
+        "*.json"
+        "*.jsonc"
+        #--- Web ----
+        "*.js"
+        "*.ts"
+        "*.mjs"
+        "*.mts"
+        "*.cjs"
+        "*.cts"
+        "*.jsx"
+        "*.tsx"
+      ];
+    };
   };
 
   settings = {
