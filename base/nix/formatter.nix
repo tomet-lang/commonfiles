@@ -2,20 +2,40 @@
 {
   projectRootFile = "flake.nix";
   programs = {
-    #= Nix
+    #--- Nix ---
     nixfmt.enable = true;
     statix.enable = true;
     deadnix.enable = true;
-
-    #= Shell
+    #--- Shell ---
     shfmt.enable = true;
     shellcheck.enable = true;
-
-    #= Main
+    #--- Rust ---
     rustfmt.enable = true;
-    taplo.enable = true;
+    taplo = {
+      enable = true;
+      settings = {
+        formatting = {
+          align_entries = true;
+          align_comments = true;
+          reorder_keys = false;
+        };
+        rule = [
+          {
+            include = [ "Cargo.toml" ];
+            keys = [
+              "dependencies"
+              "dev-dependencies"
+              "build-dependencies"
+            ];
+            formatting = {
+              reorder_keys = true;
+            };
+          }
+        ];
+      };
+    };
 
-    #= Web / TS / JS / JSON
+    #--- Biome ---
     biome = {
       enable = true;
       formatCommand = "format";
@@ -30,7 +50,7 @@
       includes = [
         "*.json"
         "*.jsonc"
-        #--- Web ----
+        #--- Web ---
         "*.js"
         "*.ts"
         "*.mjs"

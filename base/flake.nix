@@ -13,8 +13,7 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    #= Tool
+    #--- Tool ---
     sisho.url = "github:tomet-lang/sisho";
   };
 

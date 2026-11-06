@@ -1,5 +1,5 @@
 {
-  description = "Tomet ecosystem";
+  description = "Vault with Tomet";
 
   nixConfig = {
     extra-substituters = [ "https://tomet.cachix.org" ];
@@ -10,7 +10,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
     treefmt-nix.url = "github:numtide/treefmt-nix";
-    #= Tool
+    #--- Tool ---
     sisho.url = "github:tomet-lang/sisho";
   };
 
@@ -44,14 +44,14 @@
             ];
 
             shellHook = ''
-              echo "🧭📚️ Bearings, Sisho"
+              echo "❄️📚️ Nix, Sisho"
             '';
           };
 
           treefmt = {
             projectRootFile = "flake.nix";
             programs = {
-              #= Nix
+              #--- Nix ---
               nixfmt.enable = true;
               statix.enable = true;
               deadnix.enable = true;

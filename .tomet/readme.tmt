@@ -19,7 +19,7 @@ Like `dotfiles`, the name is a convention: a repository of the common files of o
 
 ==[ What is here ]
 
-Everything that is handed out is under `base/`, laid out as it lands in a repository's root. Nothing under `base/` takes effect in this repository: `base/.github/workflows/` is not run here, and the files at this repository's own root (this readme, `tmtroot/`) are its own.
+Everything that is handed out is under `base/`, laid out as it lands in a repository's root. Nothing under `base/` takes effect in this repository: `base/.github/workflows/` is not run here.
 
 - (`base/LICENSE-APACHE`, `base/LICENSE-MIT`) the license texts the repositories carry.
 - (`base/.editorconfig`) the editor settings.
@@ -27,7 +27,7 @@ Everything that is handed out is under `base/`, laid out as it lands in a reposi
 - (`base/.envrc`) direnv: `use flake`, and `scripts/` on the `PATH`.
 - (`base/.gitattributes`) LF line endings, the Linguist settings, the documents `tomet export` writes marked generated, the Git LFS patterns. tomet keeps its own.
 - (`base/.github/workflows/nix-ci.yml`) builds a repository's packages and sends them to Cachix.
-- (`base/.github/workflows/pages.yml`) builds the documents under `tmtroot/` with tomet-shelf and publishes them with GitHub Pages. Only a repository that publishes takes it.
+- (`base/.github/workflows/pages.yml`) builds the repository's documents with tomet-shelf and publishes them with GitHub Pages. Only a repository that publishes takes it.
 
 ==[ Taking a file ]
 

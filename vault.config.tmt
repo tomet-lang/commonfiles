@@ -2,7 +2,7 @@
 ::id(config-vault)
 ::macros{
   copyright: "(C) 2026 Tomet Projects"
-  generated_by: "<!-- Generated from ${1}. Edit that, then `tomet export .`. -->"
+  generated_by: "<!-- Generated from ${1}. Edit that, then `tomet export ${1} -o README.md`. -->"
 }
 ::format{
   meta: { always_newline: true }
