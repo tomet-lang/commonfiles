@@ -1,22 +1,10 @@
-<!-- Generated from tmtroot/readme.tmt. Edit that, then `tomet export .`. -->
+<!-- Generated from .tomet/readme.tmt. Edit that, then `tomet export .`. -->
 
 # Common Files
 
 The files that the repositories of the Tomet ecosystem share, kept once. A repository takes the ones it needs with [catasto](https://github.com/tomet-lang/fs-catasto), which pins each to a commit and a SHA-256, and `catasto check` (run by `sisho check`) says when a copy has been edited or has drifted.
 
 Like `dotfiles`, the name is a convention: a repository of the common files of one person or one organisation, to be taken the same way.
-
-## What is here
-
-Everything that is handed out is under `base/`, laid out as it lands in a repository's root. Nothing under `base/` takes effect in this repository: `base/.github/workflows/` is not run here.
-
-- **`base/LICENSE-APACHE`**: the license texts the repositories carry.
-- **`base/.editorconfig`**: the editor settings.
-- **`base/nix/formatter.nix`**: the `treefmt` setup the flakes use for `nix fmt`.
-- **`base/.envrc`**: direnv: `use flake`, and `scripts/` on the `PATH`.
-- **`base/.gitattributes`**: LF line endings, the Linguist settings, the documents `tomet export` writes marked generated, the Git LFS patterns. tomet keeps its own.
-- **`base/.github/workflows/nix-ci.yml`**: builds a repository's packages and sends them to Cachix.
-- **`base/.github/workflows/pages.yml`**: builds the repository's documents with tomet-shelf and publishes them with GitHub Pages. Only a repository that publishes takes it.
 
 ## Taking a file
 
